@@ -66,3 +66,22 @@ fun day3Part1(lines: Sequence<String>): Long {
         adjacentNumbers.sum().toLong()
     }.sum()
 }
+
+fun day3Part2(lines: Sequence<String>): Long {
+    return lines.windowed(3) { (topLine, middleLine, bottomLine) ->
+        val symbolIndices = middleLine.mapIndexedNotNull { index, character -> if (character == '*') index else null }.toIntArray()
+        val topLineNumbers = numbersFromLine(topLine)
+        val middleLineNumbers = numbersFromLine(middleLine)
+        val bottomLineNumbers = numbersFromLine(bottomLine)
+        println()
+        println("For line: $middleLine")
+        println("topLineNumbers: $topLineNumbers")
+        println("middleLineNumbers: $middleLineNumbers")
+        println("bottomLineNumbers: $bottomLineNumbers")
+        println("symbolIndices: ${symbolIndices.toList()}")
+        symbolIndices.map { gearIndex ->
+            val partNumbersAdjacentToGear = findAdjacentNumbers(gearIndex, listOf(topLineNumbers, middleLineNumbers, bottomLineNumbers))
+            if (partNumbersAdjacentToGear.size == 2) partNumbersAdjacentToGear.map { it.toLong() }.reduce(Long::times) else null
+        }
+    }.flatten().filterNotNull().sum()
+}
