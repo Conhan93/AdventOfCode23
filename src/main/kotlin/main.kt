@@ -4,6 +4,7 @@ import day2.day2Part1
 import day2.day2Part2
 import day3.day3Part1
 import day3.day3Part2
+import day4.day4Part1
 import util.runChallenge
 
 
@@ -13,5 +14,6 @@ fun main() {
 //    runChallenge("day2.txt", ::day2Part1).also { println("challenge 2, part 1 answer: $it") }
 //    runChallenge("day2.txt", ::day2Part2).also { println("challenge 2, part 2 answer: $it") }
 //    runChallenge("day3.txt", ::day3Part1).also { println("challenge 3, part 1 answer: $it") }
-    runChallenge("day3.txt", ::day3Part2).also { println("challenge 3, part 2 answer: $it") }
+//    runChallenge("day3.txt", ::day3Part2).also { println("challenge 3, part 2 answer: $it") }
+    runChallenge("day4.txt", ::day4Part1).also { println("challenge 4, part 1 answer: $it") }
 }
